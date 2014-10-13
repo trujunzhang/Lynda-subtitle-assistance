@@ -1,5 +1,7 @@
 package de.lynda.subtitle.match;
 
+import de.lynda.subtitle.match.utils.SearchSubtitleAndCopyTask;
+
 import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
@@ -60,4 +62,9 @@ public class FindAndCopySrt {
 		return true;
 	}
 
+	public void startFindAndCopyTask() {
+		for (File movFile : destFileList) {
+			SearchSubtitleAndCopyTask.execute(movFile, subtitleFileList);
+		}
+	}
 }
