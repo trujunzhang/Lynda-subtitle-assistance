@@ -20,6 +20,9 @@ public class SearchSubtitleFile {
 
 				if (CheckSameName.isMatch(fName, subtitleFileName)) {
 					// Copy subtitle file to dest fold
+					System.out.println("");
+					System.out.println(fName);
+					System.out.println(subtitleFile);
 				}
 
 			}

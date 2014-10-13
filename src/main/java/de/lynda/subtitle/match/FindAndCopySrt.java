@@ -15,9 +15,13 @@ public class FindAndCopySrt {
 		for (File subtitleFile : files) {
 
 			if (subtitleFile.isDirectory()) {
+
 				findAndCopy(subtitleFile, dest);
+
 			} else {
+
 				SearchSubtitleFile.findInDirectory(subtitleFile, dest);
+
 			}
 
 		}
