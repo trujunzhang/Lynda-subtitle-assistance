@@ -1,6 +1,6 @@
 package de.lynda.subtitle.match;
 
-import de.lynda.subtitle.match.utils.SearchSubtitlePath;
+import de.lynda.subtitle.match.utils.SearchSubtitleFold;
 
 import java.io.File;
 import java.io.IOException;
@@ -37,9 +37,9 @@ public class SearchAndCopyHelper {
 		source = new File(properties.getProperty("subtitle.source.path"));
 		dest = new File(properties.getProperty("media.source.path"));
 
-		SearchSubtitlePath searchSubtitlePath = new SearchSubtitlePath();
-		searchSubtitlePath.findInDirectory(source, dest.getName());
-		List<File> searchPath = searchSubtitlePath.searchPath;
+		SearchSubtitleFold searchSubtitleFold = new SearchSubtitleFold();
+		searchSubtitleFold.findInDirectory(source, dest.getName());
+		List<File> searchPath = searchSubtitleFold.searchPath;
 		if (searchPath.size() == 0) {
 			System.out.printf("not found");
 		} else if (searchPath.size() > 1) {

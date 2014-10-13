@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
 
-public class SearchSubtitlePath {
+public class SearchSubtitleFold {
 
 	public List<File> searchPath = new LinkedList<File>();
 
