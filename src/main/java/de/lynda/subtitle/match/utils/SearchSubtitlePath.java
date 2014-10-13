@@ -1,10 +1,12 @@
 package de.lynda.subtitle.match.utils;
 
 import java.io.File;
+import java.util.LinkedList;
+import java.util.List;
 
 public class SearchSubtitlePath {
 
-	public File searchPath;
+	public List<File> searchPath = new LinkedList<File>();
 
 	public void findInDirectory(File source, String name) {
 		File[] files = source.listFiles();
@@ -14,8 +16,7 @@ public class SearchSubtitlePath {
 				findInDirectory(f, name);
 			} else {
 				if (CheckSameName.isMatch(fName, name)) {
-					searchPath = f;
-					return;
+					searchPath.add(f);
 				}
 			}
 		}

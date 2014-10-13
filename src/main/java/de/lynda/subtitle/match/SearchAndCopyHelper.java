@@ -5,6 +5,7 @@ import de.lynda.subtitle.match.utils.SearchSubtitlePath;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 import java.util.Properties;
 
 public class SearchAndCopyHelper {
@@ -38,6 +39,7 @@ public class SearchAndCopyHelper {
 
 		SearchSubtitlePath searchSubtitlePath = new SearchSubtitlePath();
 		searchSubtitlePath.findInDirectory(source, dest.getName());
-		File searchPath = searchSubtitlePath.searchPath;
-	}
+        List<File> searchPath = searchSubtitlePath.searchPath;
+
+    }
 }
