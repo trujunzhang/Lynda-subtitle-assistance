@@ -1,5 +1,8 @@
 package de.lynda.subtitle.match;
 
+import de.lynda.subtitle.match.utils.SearchSubtitlePath;
+
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -10,8 +13,8 @@ public class SearchAndCopyHelper {
 	 */
 	private static final String PROPERTIES_FILENAME = "subtitle.properties";
 
-	private static String source;
-	private static String dest;
+	private static File source;
+	private static File dest;
 
 	public static void main(String[] args) {
 		getResources();
@@ -30,7 +33,11 @@ public class SearchAndCopyHelper {
 			System.exit(1);
 		}
 
-		source = properties.getProperty("subtitle.source.path");
-		dest = properties.getProperty("media.source.path");
+		source = new File(properties.getProperty("subtitle.source.path"));
+		dest = new File(properties.getProperty("media.source.path"));
+
+		SearchSubtitlePath searchSubtitlePath = new SearchSubtitlePath();
+		searchSubtitlePath.findInDirectory(source, dest.getName());
+		File searchPath = searchSubtitlePath.searchPath;
 	}
 }
