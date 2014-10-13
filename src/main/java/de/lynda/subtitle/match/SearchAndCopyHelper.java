@@ -39,7 +39,16 @@ public class SearchAndCopyHelper {
 
 		SearchSubtitlePath searchSubtitlePath = new SearchSubtitlePath();
 		searchSubtitlePath.findInDirectory(source, dest.getName());
-        List<File> searchPath = searchSubtitlePath.searchPath;
+		List<File> searchPath = searchSubtitlePath.searchPath;
+		if (searchPath.size() == 0) {
+			System.out.printf("not found");
+		} else if (searchPath.size() > 1) {
+			System.out.printf("found multiple path");
+			for (int i = 0; i < searchPath.size(); i++) {
+				System.out.println(searchPath.get(i).getAbsolutePath());
+			}
+		}
+		File path = searchPath.get(0);
 
-    }
+	}
 }
