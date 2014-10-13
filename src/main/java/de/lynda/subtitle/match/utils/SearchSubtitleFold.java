@@ -10,13 +10,18 @@ public class SearchSubtitleFold {
 
 	public void findInDirectory(File source, String name) {
 		File[] files = source.listFiles();
+
 		for (File f : files) {
+
 			String fName = f.getName();
+
 			if (f.isDirectory()) {
+
 				if (CheckSameName.isMatch(fName, name)) {
 					searchPath.add(f);
 				}
 				findInDirectory(f, name);
+
 			} else {
 
 			}

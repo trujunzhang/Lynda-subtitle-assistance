@@ -39,6 +39,7 @@ public class SearchAndCopyHelper {
 
 		SearchSubtitleFold searchSubtitleFold = new SearchSubtitleFold();
 		searchSubtitleFold.findInDirectory(source, dest.getName());
+
 		List<File> searchPath = searchSubtitleFold.searchPath;
 		if (searchPath.size() == 0) {
 			System.out.printf("not found");
@@ -48,7 +49,8 @@ public class SearchAndCopyHelper {
 				System.out.println(searchPath.get(i).getAbsolutePath());
 			}
 		}
-		File path = searchPath.get(0);
 
+		File subtitleFold = searchPath.get(0);
+		FindAndCopySrt.findAndCopy(subtitleFold, dest);
 	}
 }
