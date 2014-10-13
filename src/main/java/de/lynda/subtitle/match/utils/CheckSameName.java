@@ -6,8 +6,8 @@ public class CheckSameName {
 		if (name.equals("Keynote '09 Essential Training")) {
 			int x = 0;
 		}
-		name = name.toLowerCase();
-		match = match.toLowerCase();
+		name = removePostType(name.toLowerCase());
+		match = removePostType(match.toLowerCase());
 
 		String[] split = match.split(" ");
 		if (split.length > 1) {
@@ -26,6 +26,14 @@ public class CheckSameName {
 		}
 
 		return step == size;
+	}
+
+	private static String removePostType(String name) {
+		int index = name.lastIndexOf(".");
+		if (index != -1) {
+			return name.substring(0, index);
+		}
+		return name;
 	}
 
 	public static boolean isMatch(String name, String match) {
