@@ -12,38 +12,45 @@ public class FindAndCopySrt {
 	private List<File> destFileList = new LinkedList<File>();
 
 	public FindAndCopySrt(File subtitleFold, File dest) {
-		collectListInPath(subtitleFold, subtitleFileList);
-		collectListInPath(dest, destFileList);
+		collectListInPath(subtitleFold, subtitleFileList, "srt");
+		collectListInPath(dest, destFileList, null);
 	}
 
-	public void collectListInPath(File fold, List<File> list) {
+	public void collectListInPath(File fold, List<File> list, String postType) {
 		File[] files = fold.listFiles();
 
 		for (File file : files) {
 			if (file.isDirectory()) {
-				collectListInPath(file, list);
+				if (this.checkFoldType(file.getName().toLowerCase())) {
+					collectListInPath(file, list, postType);
+				}
 			} else {
-				list.add(file);
+				if (this.checkFileType(file.getName().toLowerCase(), postType)) {
+					list.add(file);
+				}
 			}
 		}
 	}
 
-	// public static void findAndCopy(File subtitleFold, File dest) {
-	// File[] files = subtitleFold.listFiles();
-	//
-	// for (File subtitleFile : files) {
-	//
-	// if (subtitleFile.isDirectory()) {
-	//
-	// findAndCopy(subtitleFile, dest);
-	//
-	// } else {
-	//
-	// SearchSubtitleFile.findInDirectory(subtitleFile, dest);
-	//
-	// }
-	//
-	// }
-	// }
+	private boolean checkFoldType(String name) {
+		// Exercise Files
+		if (name.equals("Exercise Files".toLowerCase())) {
+			return false;
+		}
+		return false;
+	}
+
+	private boolean checkFileType(String name, String postType) {
+		// /Volumes/macshare/MacPE/Lynda/keynote 09/
+		if (name.equals(".DS_Store".toLowerCase())) {
+			return false;
+		}
+		if (postType != null) {
+			if (!name.contains(postType)) {
+				return false;
+			}
+		}
+		return true;
+	}
 
 }
