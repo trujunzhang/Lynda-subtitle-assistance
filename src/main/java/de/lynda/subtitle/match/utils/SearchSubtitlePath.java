@@ -13,11 +13,12 @@ public class SearchSubtitlePath {
 		for (File f : files) {
 			String fName = f.getName();
 			if (f.isDirectory()) {
-				findInDirectory(f, name);
-			} else {
 				if (CheckSameName.isMatch(fName, name)) {
 					searchPath.add(f);
 				}
+				findInDirectory(f, name);
+			} else {
+
 			}
 		}
 	}
