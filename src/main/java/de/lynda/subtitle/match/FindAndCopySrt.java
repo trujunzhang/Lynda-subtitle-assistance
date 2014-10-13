@@ -20,15 +20,22 @@ public class FindAndCopySrt {
 		File[] files = fold.listFiles();
 
 		for (File file : files) {
+
+			String name = file.getName().toLowerCase();
 			if (file.isDirectory()) {
-				if (this.checkFoldType(file.getName().toLowerCase())) {
+
+				if (this.checkFoldType(name)) {
 					collectListInPath(file, list, postType);
 				}
+
 			} else {
-				if (this.checkFileType(file.getName().toLowerCase(), postType)) {
+
+				if (this.checkFileType(name, postType)) {
 					list.add(file);
 				}
+
 			}
+
 		}
 	}
 
@@ -37,7 +44,7 @@ public class FindAndCopySrt {
 		if (name.equals("Exercise Files".toLowerCase())) {
 			return false;
 		}
-		return false;
+		return true;
 	}
 
 	private boolean checkFileType(String name, String postType) {
