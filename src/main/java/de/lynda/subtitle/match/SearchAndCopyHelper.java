@@ -51,6 +51,6 @@ public class SearchAndCopyHelper {
 		}
 
 		File subtitleFold = searchPath.get(0);
-		FindAndCopySrt.findAndCopy(subtitleFold, dest);
+		FindAndCopySrt findAndCopySrt = new FindAndCopySrt(subtitleFold, dest);
 	}
 }

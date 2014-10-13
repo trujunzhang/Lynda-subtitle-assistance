@@ -1,29 +1,49 @@
 package de.lynda.subtitle.match;
 
-import de.lynda.subtitle.match.utils.SearchSubtitleFile;
-
 import java.io.File;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Created by djzhang on 10/13/14.
  */
 public class FindAndCopySrt {
+	private List<File> subtitleFileList = new LinkedList<File>();
+	private List<File> destFileList = new LinkedList<File>();
 
-	public static void findAndCopy(File subtitleFold, File dest) {
-		File[] files = subtitleFold.listFiles();
+	public FindAndCopySrt(File subtitleFold, File dest) {
+		collectListInPath(subtitleFold, subtitleFileList);
+		collectListInPath(dest, destFileList);
+	}
 
-		for (File subtitleFile : files) {
+	public void collectListInPath(File fold, List<File> list) {
+		File[] files = fold.listFiles();
 
-			if (subtitleFile.isDirectory()) {
-
-				findAndCopy(subtitleFile, dest);
-
+		for (File file : files) {
+			if (file.isDirectory()) {
+				collectListInPath(file, list);
 			} else {
-
-				SearchSubtitleFile.findInDirectory(subtitleFile, dest);
-
+				list.add(file);
 			}
-
 		}
 	}
+
+	// public static void findAndCopy(File subtitleFold, File dest) {
+	// File[] files = subtitleFold.listFiles();
+	//
+	// for (File subtitleFile : files) {
+	//
+	// if (subtitleFile.isDirectory()) {
+	//
+	// findAndCopy(subtitleFile, dest);
+	//
+	// } else {
+	//
+	// SearchSubtitleFile.findInDirectory(subtitleFile, dest);
+	//
+	// }
+	//
+	// }
+	// }
+
 }
