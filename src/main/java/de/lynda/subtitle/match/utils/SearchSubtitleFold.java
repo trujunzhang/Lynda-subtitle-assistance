@@ -22,9 +22,8 @@ public class SearchSubtitleFold {
 				}
 				findInDirectory(f, name);
 
-			} else {
-
 			}
+
 		}
 	}
 }
