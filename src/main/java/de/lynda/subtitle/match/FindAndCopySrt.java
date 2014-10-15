@@ -64,8 +64,8 @@ public class FindAndCopySrt {
 
 	public void startFindAndCopyTask() {
 		for (File movFile : destFileList) {
-			// SearchSubtitleAndCopyTask.execute(movFile, subtitleFileList);
+			SearchSubtitleAndCopyTask.execute(movFile, subtitleFileList);// used
 		}
-		SearchSubtitleAndCopyTask.execute(destFileList.get(0), subtitleFileList);
+		// SearchSubtitleAndCopyTask.execute(destFileList.get(0), subtitleFileList);// Test
 	}
 }
