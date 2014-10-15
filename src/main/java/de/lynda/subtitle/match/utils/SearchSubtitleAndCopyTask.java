@@ -53,7 +53,7 @@ public class SearchSubtitleAndCopyTask {
 		} catch (IOException e2) {
 			System.out.println("Проблема при чтении файла: " + e2.getMessage());
 		} finally {
-			// System.out.println("Операция прошла успешно");
+			System.out.println(to);
 		}
 	}
 

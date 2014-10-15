@@ -2,9 +2,7 @@ package de.lynda.subtitle.match;
 
 import de.lynda.subtitle.match.utils.SearchSubtitleFold;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.List;
 import java.util.Properties;
 
@@ -25,7 +23,7 @@ public class SearchAndCopyHelper {
 		// Read the developer key from the properties file.
 		Properties properties = new Properties();
 		try {
-			InputStream in = SearchAndCopyHelper.class.getResourceAsStream("/" + PROPERTIES_FILENAME);
+			InputStream in = getInputStream();
 			properties.load(in);
 
 		} catch (IOException e) {
@@ -52,6 +50,19 @@ public class SearchAndCopyHelper {
 
 		File subtitleFold = searchPath.get(0);
 		FindAndCopySrt findAndCopySrt = new FindAndCopySrt(subtitleFold, dest);
-        findAndCopySrt.startFindAndCopyTask();
+		findAndCopySrt.startFindAndCopyTask();
+	}
+
+	private static InputStream getInputStream() {
+		String home = System.getenv("HOME");
+		File desktopPath = new File(home, String.format("Desktop/Lynda-subtitle-assistance/%s", PROPERTIES_FILENAME));
+
+		try {
+			return new FileInputStream(desktopPath);
+		} catch (FileNotFoundException e) {
+			System.out.println("not found " + desktopPath.getAbsolutePath());
+			e.printStackTrace();
+		}
+		return null;
 	}
 }
