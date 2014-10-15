@@ -49,12 +49,14 @@ public class SearchAndCopyHelper {
 
 		List<File> searchPath = searchSubtitleFold.searchPath;
 		if (searchPath.size() == 0) {
-			System.out.printf("not found");
+			System.out.println("not found");
+			System.exit(1);
 		} else if (searchPath.size() > 1) {
-			System.out.printf("found multiple path");
+			System.out.printf("---------found multiple path---------");
 			for (int i = 0; i < searchPath.size(); i++) {
 				System.out.println(searchPath.get(i).getAbsolutePath());
 			}
+			System.exit(1);
 		}
 
 		File subtitleFold = searchPath.get(0);
