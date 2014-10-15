@@ -35,6 +35,15 @@ public class SearchAndCopyHelper {
 		source = new File(properties.getProperty("subtitle.source.path"));
 		dest = new File(properties.getProperty("media.source.path"));
 
+		if (source.exists() == false) {
+			System.out.println("not found *source* path: " + source.getAbsolutePath());
+			return;
+		}
+		if (dest.exists() == false) {
+			System.out.println("not found *dest* path: " + dest.getAbsolutePath());
+			return;
+		}
+
 		SearchSubtitleFold searchSubtitleFold = new SearchSubtitleFold();
 		searchSubtitleFold.findInDirectory(source, dest.getName());
 
@@ -55,7 +64,8 @@ public class SearchAndCopyHelper {
 
 	private static InputStream getInputStream() {
 		String home = System.getenv("HOME");
-		File desktopPath = new File(home, String.format("Desktop/Lynda-subtitle-assistance/%s", PROPERTIES_FILENAME));
+		File desktopPath = new File(home, String.format("Desktop/Lynda-subtitle-assistance/config/%s",
+				PROPERTIES_FILENAME));
 
 		try {
 			return new FileInputStream(desktopPath);
