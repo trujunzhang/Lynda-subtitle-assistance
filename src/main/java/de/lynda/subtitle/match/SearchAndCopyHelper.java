@@ -37,11 +37,11 @@ public class SearchAndCopyHelper {
 
 		if (source.exists() == false) {
 			System.out.println("not found *source* path: " + source.getAbsolutePath());
-			return;
+			System.exit(1);
 		}
 		if (dest.exists() == false) {
 			System.out.println("not found *dest* path: " + dest.getAbsolutePath());
-			return;
+			System.exit(1);
 		}
 
 		SearchSubtitleFold searchSubtitleFold = new SearchSubtitleFold();
